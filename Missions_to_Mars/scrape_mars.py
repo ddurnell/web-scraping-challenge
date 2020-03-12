@@ -97,15 +97,9 @@ def scrape_mars_facts(browser, url):
 
     tables = pd.read_html(url)
     df = pd.DataFrame(tables[0])
-    
-    # remove header to csc file
-    df.to_csv('temp.csv', header=False, index=False)
-    # read it back from csv file
-    df = pd.read_csv('temp.csv', header=None)
 
-    print("++++++++++++++++++++++++++++++++++++++++++++++++")
     print(df)
-    return df.to_html()
+    return df.to_html(index=False, header=False)
 
 # Subfunction for scrape_mars_hemispheres
 # For each url, navigate to the enhanced tif, and return its link
