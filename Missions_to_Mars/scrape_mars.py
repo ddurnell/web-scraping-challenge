@@ -96,10 +96,16 @@ def scrape_mars_facts(browser, url):
     soup = bs(html, 'lxml')
 
     tables = pd.read_html(url)
-    fact_table = tables[0]
-    print(fact_table)
+    df = pd.DataFrame(tables[0])
+    
+    # remove header to csc file
+    df.to_csv('temp.csv', header=False, index=False)
+    # read it back from csv file
+    df = pd.read_csv('temp.csv', header=None)
 
-    return fact_table.to_html()
+    print("++++++++++++++++++++++++++++++++++++++++++++++++")
+    print(df)
+    return df.to_html()
 
 # Subfunction for scrape_mars_hemispheres
 # For each url, navigate to the enhanced tif, and return its link
@@ -151,25 +157,25 @@ def scrape():
     browser = init_browser()
     mars_data = {}
 
-    # get mars news
-    mars_news = scrape_mars_news(browser, 'https://mars.nasa.gov/news/')
-    mars_data['news'] = mars_news
+    # # get mars news
+    # mars_news = scrape_mars_news(browser, 'https://mars.nasa.gov/news/')
+    # mars_data['news'] = mars_news
 
-    # get mars image
-    mars_image = scrape_mars_image(browser, 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars')
-    mars_data['image'] = mars_image
+    # # get mars image
+    # mars_image = scrape_mars_image(browser, 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars')
+    # mars_data['image'] = mars_image
     
-    # get mars image
-    mars_weather = scrape_mars_weather(browser, 'https://twitter.com/marswxreport?lang=en')
-    mars_data['weather'] = mars_weather
+    # # get mars image
+    # mars_weather = scrape_mars_weather(browser, 'https://twitter.com/marswxreport?lang=en')
+    # mars_data['weather'] = mars_weather
 
     # get mars facts table
     mars_facts = scrape_mars_facts(browser, 'https://space-facts.com/mars/')
     mars_data['facts'] = mars_facts
 
     # get mars hemispheres links
-    mars_hems = scrape_mars_hemispheres(browser, 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars')
-    mars_data['hemisphere_image_urls'] = mars_hems
+    # mars_hems = scrape_mars_hemispheres(browser, 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars')
+    # mars_data['hemisphere_image_urls'] = mars_hems
 
     # Close the browser after scraping
     browser.quit()
