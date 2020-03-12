@@ -8,7 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mars Information</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheets/style.css') }}">
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheets/df_style.css') }}">
 
 </head>
 
@@ -55,15 +56,17 @@
       <h2>Latest Images of Mars Hemispheres:</h2>
       <div class="row">
         <div class="col-md-6">
-          <a href={{mars.hemisphere_image_urls[0].img_url}}>{{mars.hemisphere_image_urls[0].title}}</a>
+          <a href={{mars.hemisphere_image_urls[0].img_url}} class="hemlink">{{mars.hemisphere_image_urls[0].title}}</a>
           <br>
-          <a href={{mars.hemisphere_image_urls[1].img_url}}>{{mars.hemisphere_image_urls[1].title}}</a>
+          <a href={{mars.hemisphere_image_urls[1].img_url}} class="hemlink">{{mars.hemisphere_image_urls[1].title}}</a>
           <br>
-          <a href={{mars.hemisphere_image_urls[2].img_url}}>{{mars.hemisphere_image_urls[2].title}}</a>
+          <a href={{mars.hemisphere_image_urls[2].img_url}} class="hemlink">{{mars.hemisphere_image_urls[2].title}}</a>
           <br>
-          <a href={{mars.hemisphere_image_urls[3].img_url}}>{{mars.hemisphere_image_urls[3].title}}</a>
+          <a href={{mars.hemisphere_image_urls[3].img_url}} class="hemlink">{{mars.hemisphere_image_urls[3].title}}</a>
         </div>
       </div>
+
+      <div class="row"><br></div>
 
     </div>
   </div>

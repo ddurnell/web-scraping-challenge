@@ -12,10 +12,12 @@ p {
   font-size: 20px;
 }
 
+.hemlink { font-size: 25px; text-decoration: none; }
+
 /* Giving our navbar some padding and a background color */
 .navbar {
   padding: 10px;
-  background: #8baabd;
+  background: #373d41;
   color:black;
 }
 
