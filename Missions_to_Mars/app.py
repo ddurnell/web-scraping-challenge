@@ -29,4 +29,6 @@ def scrape():
 
 
 if __name__ == "__main__":
+    #scrape()
     app.run(debug=True)
+
